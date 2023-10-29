@@ -106,5 +106,9 @@ if __name__ == "__main__":
                 cls()
 
     except KeyboardInterrupt:
+        upper.stop()
+        lower.stop()
+        GPIO.cleanup()
+
         print("Quitting")
         quit()
