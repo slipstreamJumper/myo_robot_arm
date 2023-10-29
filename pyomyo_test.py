@@ -76,7 +76,7 @@ if __name__ == "__main__":
                 imu = list(q.get())
 
                 quat, acc, gyro = imu
-                if guat = 0: gquat = quat
+                if guat == 0: gquat = quat
                 else:
 
 
