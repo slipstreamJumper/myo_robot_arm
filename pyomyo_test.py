@@ -39,15 +39,16 @@ def normalize_myo_input(a_i, b_i):
     return alpha_norm, beta_norm
 
 def normalize_color_output(a_i, b_i):
-    a_color_norm = ((a_i - alpha[1])*(255/(alpha[1]-alpha[0])))
-    return a_color_norm
+    a_color_norm = abs(((a_i - alpha[1])*(255/(alpha[1]-alpha[0]))))
+    b_color_norm = abs(((b_i - beta[1]) * (255 / (beta[1] - beta[0]))))
+    return a_color_norm, b_color_norm
 
 # ------------ Myo Setup ---------------
 q = multiprocessing.Queue()
-
+m = Myo(mode=emg_mode.FILTERED)
 
 def worker(q):
-    m = Myo(mode=emg_mode.FILTERED)
+    #m = Myo(mode=emg_mode.FILTERED)
     m.connect()
 
     def add_to_queue(quat, acc, gyro):
@@ -89,8 +90,9 @@ if __name__ == "__main__":
                 print("Quaternions:", quat)
                 a_norm, b_norm = normalize_myo_input(quat[0], quat[1])
                 print("Normalized: ", a_norm, b_norm)
-                color_norm = normalize_color_output(quat[0], quat[1])
-                print("Color Norm: ", color_norm)
+                a_color_norm, b_color_norm = normalize_color_output(quat[0], quat[1])
+                print("Color Norm: ", a_color_norm, b_color_norm)
+                m.set_leds([a_color_norm, b_color_norm, 0], [a_color_norm, b_color_norm, 0])
                 #print("Acceleration:", acc)
                 #print("Gyroscope:", gyro)
                 cls()
