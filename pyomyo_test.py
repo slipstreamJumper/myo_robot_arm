@@ -62,8 +62,6 @@ def worker(q):
         q.put(imu_data)
 
     m.add_imu_handler(add_to_queue)
-
-    # Orange logo and bar LEDs
     m.set_leds([255, 0, 0], [255, 0, 0])
     # Vibrate to know we connected okay
     m.vibrate(1)
@@ -98,9 +96,13 @@ if __name__ == "__main__":
                 print("Normalized: ", a_norm, b_norm)
                 a_color_norm, b_color_norm = normalize_color_output(quat[0], quat[1])
                 print("Color Norm: ", a_color_norm, b_color_norm)
-                m.set_leds([int(a_color_norm), int(b_color_norm), 0], [int(a_color_norm), int(b_color_norm), 0])
+                m.set_leds([int(a_color_norm), int(b_color_norm), int(a_color_norm)], [int(a_color_norm), int(b_color_norm), int(a_color_norm)])
                 #print("Acceleration:", acc)
                 #print("Gyroscope:", gyro)
+
+                upper.ChangeDutyCycle(int(a_norm))
+                lower.ChangeDutyCycle(int(b_norm))
+
                 cls()
 
     except KeyboardInterrupt:
