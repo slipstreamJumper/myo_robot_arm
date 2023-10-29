@@ -5,7 +5,7 @@ import multiprocessing
 from pyomyo import Myo, emg_mode
 import os
 import sys, time
-from raspberrypy.control.myo import Myo
+#from raspberrypy.control.myo import Myo
 
 import RPi.GPIO as GPIO
 
