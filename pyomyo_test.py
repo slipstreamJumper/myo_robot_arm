@@ -39,7 +39,7 @@ def normalize_myo_input(a_i, b_i):
     return alpha_norm, beta_norm
 
 def normalize_color_output(a_i, b_i):
-    a_color_norm = ((a_i - 255)/(alpha[1]-alpha[0]))
+    a_color_norm = ((a_i - alpha[1])*(255/(alpha[1]-alpha[0])))
     return a_color_norm
 
 # ------------ Myo Setup ---------------
