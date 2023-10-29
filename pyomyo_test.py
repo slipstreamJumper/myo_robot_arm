@@ -78,9 +78,7 @@ if __name__ == "__main__":
                 quat, acc, gyro = imu
                 if guat == 0: gquat = quat
                 else:
-
-
-                print("Global Quat:", )
+                    print("Global Quat:", quat)
 
 
                 print("Quaternions:", quat)
