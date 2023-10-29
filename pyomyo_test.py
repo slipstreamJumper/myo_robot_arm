@@ -36,7 +36,7 @@ def cls():
 def normalize_myo_input(a_i, b_i):
     alpha_norm = ((a_i - alpha[0])/(alpha[1]-alpha[0]))
     beta_norm =  ((b_i - beta[0])/(beta[1]-beta[0]))
-
+    return alpha_norm, beta_norm
 # ------------ Myo Setup ---------------
 q = multiprocessing.Queue()
 
@@ -82,6 +82,8 @@ if __name__ == "__main__":
 
 
                 print("Quaternions:", quat)
+                a_norm, b_norm = normalize_myo_input(quat[0], quat[1])
+                print("Normalized: ", a_norm, b_norm)
                 #print("Acceleration:", acc)
                 #print("Gyroscope:", gyro)
                 cls()
