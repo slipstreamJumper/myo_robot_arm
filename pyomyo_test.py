@@ -92,7 +92,7 @@ if __name__ == "__main__":
                 print("Normalized: ", a_norm, b_norm)
                 a_color_norm, b_color_norm = normalize_color_output(quat[0], quat[1])
                 print("Color Norm: ", a_color_norm, b_color_norm)
-                m.set_leds([a_color_norm, b_color_norm, 0], [a_color_norm, b_color_norm, 0])
+                m.set_leds([int(a_color_norm), int(b_color_norm), 0], [int(a_color_norm), int(b_color_norm), 0])
                 #print("Acceleration:", acc)
                 #print("Gyroscope:", gyro)
                 cls()
