@@ -76,9 +76,9 @@ if __name__ == "__main__":
                 imu = list(q.get())
 
                 quat, acc, gyro = imu
-                if guat == 0: gquat = quat
+                if gquat == 0: gquat = quat
                 else:
-                    print("Global Quat:", quat)
+                    print("Global Quat:", gquat)
 
 
                 print("Quaternions:", quat)
