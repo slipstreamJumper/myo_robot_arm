@@ -14,8 +14,8 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(21, GPIO.OUT)
 GPIO.setup(26, GPIO.OUT)
-upper = GPIO.PWM(26, 50)
-lower = GPIO.PWM(21, 50)
+upper = GPIO.PWM(26, 4)
+lower = GPIO.PWM(21, 4)
 
 #global vars
 gquat = 0
