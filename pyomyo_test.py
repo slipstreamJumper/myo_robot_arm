@@ -22,9 +22,14 @@ gquat = 0
 gacc = 0
 ggyro = 0
 
+#full arm left and right
 alpha = [-8700, 8700, 2800]
-beta = [-3300, 6400, -3250]
 
+#vert motion about elbow
+beta = [-1200, 1100, -1199]
+
+# rotation of lower arm
+lamb = [-5500, 4000, -1600]
 
 
 def cls():
@@ -34,9 +39,10 @@ def cls():
 
 #------------- nomalizing inputs of myo --------
 
-def normalize_myo_input(a_i, b_i):
+def normalize_myo_input(a_i, b_i, l_i):
     alpha_norm = ((a_i - alpha[0])/(alpha[1]-alpha[0]))
     beta_norm =  ((b_i - beta[0])/(beta[1]-beta[0]))
+    lamb_norm = ((l_i - lamb[0]) / (lamb[1] - lamb[0]))
     return alpha_norm, beta_norm
 
 def normalize_color_output(a_i, b_i):
@@ -100,8 +106,8 @@ if __name__ == "__main__":
 
 
                 print("Quaternions:", quat)
-                a_norm, b_norm = normalize_myo_input(quat[0], quat[1])
-                print("Normalized: ", a_norm, b_norm)
+                a_norm, b_norm, l_norm = normalize_myo_input(quat[0], quat[1], quat[2])
+                print("Normalized: ", "Alpha: " , a_norm, " Beta: ",  b_norm, " Lambda: ", l_norm)
                 a_color_norm, b_color_norm = normalize_color_output(quat[0], quat[1])
                 print("Color Norm: ", a_color_norm, b_color_norm)
                 m.set_leds([int(a_color_norm), int(b_color_norm), int(a_color_norm)], [int(a_color_norm), int(b_color_norm), int(a_color_norm)])
