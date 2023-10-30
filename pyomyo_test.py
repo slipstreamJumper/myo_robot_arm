@@ -126,8 +126,8 @@ if __name__ == "__main__":
     p = multiprocessing.Process(target=worker, args=(q,))
     p.start()
 
-    upper.start(5)
-    lower.start(5)
+    upper.start(20)
+    lower.start(20)
 
 
 
