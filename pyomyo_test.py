@@ -14,8 +14,8 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(21, GPIO.OUT)
 GPIO.setup(26, GPIO.OUT)
-upper = GPIO.PWM(26, 50)
-lower = GPIO.PWM(21, 50)
+upper = GPIO.PWM(26, 20)
+lower = GPIO.PWM(21, 20)
 
 #global vars
 gquat = 0
@@ -108,8 +108,8 @@ if __name__ == "__main__":
     p = multiprocessing.Process(target=worker, args=(q,))
     p.start()
 
-    upper.start(7.5)
-    lower.start(7.5)
+    upper.start(5)
+    lower.start(5)
 
 
 
