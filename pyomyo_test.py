@@ -99,8 +99,8 @@ if __name__ == "__main__":
                 a_color_norm, b_color_norm = normalize_color_output(quat[0], quat[1])
                 print("Color Norm: ", a_color_norm, b_color_norm)
                 m.set_leds([int(a_color_norm), int(b_color_norm), int(a_color_norm)], [int(a_color_norm), int(b_color_norm), int(a_color_norm)])
-                #print("Acceleration:", acc)
-                #print("Gyroscope:", gyro)
+                print("Acceleration:", acc)
+                print("Gyroscope:", gyro)
 
                 upper.ChangeDutyCycle(get_normalized_dc(int(a_norm)))
                 lower.ChangeDutyCycle(get_normalized_dc(int(b_norm)))
