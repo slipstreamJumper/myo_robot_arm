@@ -46,6 +46,12 @@ def normalize_color_output(a_i, b_i):
     if b_color_norm > 255: b_color_norm = 255
     return a_color_norm, b_color_norm
 
+def normalize_duty_cycle(duty):
+    desired_angle = duty * 180
+    if desired_angle >= 180: desired_angle = 179
+    if desired_angle <= 0: desired_angle = 1
+    return float((1 / 18) * desired_angle + 2)
+
 def get_normalized_dc(desired_angle):
     return float((1/18)*desired_angle+2)
 
@@ -105,8 +111,8 @@ if __name__ == "__main__":
                 try:
                     print("changing duty cycle")
 
-                    print("Upper Duty: ", int(a_norm), " | Angle: ", get_normalized_dc(int(a_norm)))
-                    print("Lower Duty: ", int(b_norm), " | Angle: ", get_normalized_dc(int(b_norm)))
+                    print("Upper Duty: ", a_norm, " | Angle: ", normalize_duty_cycle(a_norm))
+                    print("Lower Duty: ", b_norm, " | Angle: ", normalize_duty_cycle(b_norm))
                     #upper.ChangeDutyCycle(get_normalized_dc(int(a_norm)))
                     #lower.ChangeDutyCycle(get_normalized_dc(int(b_norm)))
                 except:
