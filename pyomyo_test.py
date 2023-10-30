@@ -66,7 +66,7 @@ def normalize_duty_cycle(a_n_duty, b_n_duty, l_n_duty):
     #if a_angle >= 180: a_angle = 179
     #if a_angle <= 0: a_angle = 1
     #a_angle = (1 / 18) * a_angle + 2
-    a_angle = a_angle / 10
+
 
     #if b_n_duty <= 0: b_n_duty = 0
     #b_angle = abs(((b_n_duty - beta[1])*(180/(beta[1]-beta[0]))))
@@ -152,8 +152,8 @@ if __name__ == "__main__":
 
                 try:
                     print("changing duty cycle")
-                    #upper.ChangeDutyCycle(get_normalized_dc(int(b_angle)))
-                    #lower.ChangeDutyCycle(get_normalized_dc(int(l_angle)))
+                    upper.ChangeDutyCycle(get_normalized_dc(int(b_angle)))
+                    lower.ChangeDutyCycle(get_normalized_dc(int(l_angle)))
                 except:
                     print("failed to update arm")
 
