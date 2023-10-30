@@ -102,8 +102,11 @@ if __name__ == "__main__":
                 print("Acceleration:", acc)
                 print("Gyroscope:", gyro)
 
-                upper.ChangeDutyCycle(get_normalized_dc(int(a_norm)))
-                lower.ChangeDutyCycle(get_normalized_dc(int(b_norm)))
+                try:
+                    upper.ChangeDutyCycle(get_normalized_dc(int(a_norm)))
+                    lower.ChangeDutyCycle(get_normalized_dc(int(b_norm)))
+                except:
+                    print("failed to update arm")
 
                 cls()
 
