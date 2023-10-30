@@ -40,9 +40,12 @@ def cls():
 #------------- nomalizing inputs of myo --------
 
 def normalize_myo_input(a_i, b_i, l_i):
-    alpha_norm = ((a_i - alpha[0])/(alpha[1]-alpha[0]))
-    beta_norm  = ((b_i - beta[0])/(beta[1]-beta[0]))
-    lamb_norm  = ((l_i - lamb[0]) / (lamb[1] - lamb[0]))
+    #alpha_norm = ((a_i - alpha[0])/(alpha[1]-alpha[0]))
+    alpha_norm = ((a_i - alpha[1])*(180/(alpha[1]-alpha[0])))
+    #beta_norm  = ((b_i - beta[0])/(beta[1]-beta[0]))
+    beta_norm = ((b_i - beta[1]) * (180 / (beta[1] - beta[0])))
+    #lamb_norm  = ((l_i - lamb[0]) / (lamb[1] - lamb[0]))
+    lamb_norm = ((l_i - lamb[1])*(180/(lamb[1]-lamb[0])))
     return alpha_norm, beta_norm, lamb_norm
 
 def normalize_color_output(a_i, b_i):
