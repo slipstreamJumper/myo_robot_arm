@@ -58,8 +58,19 @@ def normalize_color_output(a_i, b_i):
 def normalize_duty_cycle(a_n_duty, b_n_duty, l_n_duty):
 
     a_angle = abs(((a_n_duty + 179) % 360 + 360) % 360 - 179)/10
+
+    if a_angle <= 1: a_angle = 1
+    elif a_angle >= 18: a_angle = 17.9
+
     b_angle = abs(((b_n_duty + 179) % 360 + 360) % 360 - 179)/10
+
+    if b_angle <= 1: b_angle = 1
+    elif b_angle >= 18: b_angle = 17.9
+
     l_angle = abs(((l_n_duty + 179) % 360 + 360) % 360 - 179)/10
+
+    if l_angle <= 1: l_angle = 1
+    elif l_angle >= 18: l_angle = 17.9
 
     #if a_n_duty <= 0: a_n_duty = 0
     #a_angle = abs(((a_n_duty - alpha[1])*(180/(alpha[1]-alpha[0]))))
