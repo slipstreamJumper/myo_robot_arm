@@ -58,19 +58,19 @@ def normalize_duty_cycle(a_n_duty, b_n_duty, l_n_duty):
     a_angle = abs(((a_n_duty - alpha[1])*(180/(alpha[1]-alpha[0]))))
     #if a_angle >= 180: a_angle = 179
     #if a_angle <= 0: a_angle = 1
-    a_angle = float((1 / 18) * a_angle + 2)
+    #a_angle = float((1 / 18) * a_angle + 2)
 
     if b_n_duty <= 0: b_n_duty = 0
     b_angle = abs(((b_n_duty - beta[1])*(180/(beta[1]-beta[0]))))
     #if b_angle >= 180: b_angle = 179
     #if b_angle <= 0: b_angle = 1
-    b_angle = float((1 / 18) * b_angle + 2)
+    #b_angle = float((1 / 18) * b_angle + 2)
 
     if l_n_duty <= 0: l_n_duty = 0
     l_angle = abs(((l_n_duty - lamb[1])*(180/(lamb[1]-lamb[0]))))
     #if l_angle >= 180: l_angle = 179
     #if l_angle <= 0: l_angle = 1
-    l_angle = float((1 / 18) * l_angle + 2)
+    #l_angle = float((1 / 18) * l_angle + 2)
 
     return a_angle, b_angle, l_angle
 
