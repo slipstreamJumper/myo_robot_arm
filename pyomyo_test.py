@@ -77,8 +77,8 @@ if __name__ == "__main__":
     p = multiprocessing.Process(target=worker, args=(q,))
     p.start()
 
-    upper.start(50)
-    lower.start(50)
+    upper.start(100)
+    lower.start(100)
 
 
 
@@ -103,6 +103,7 @@ if __name__ == "__main__":
                 print("Gyroscope:", gyro)
 
                 try:
+                    print("changing duty cycle")
                     upper.ChangeDutyCycle(get_normalized_dc(int(a_norm)))
                     lower.ChangeDutyCycle(get_normalized_dc(int(b_norm)))
                 except:
