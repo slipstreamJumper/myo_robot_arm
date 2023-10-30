@@ -123,19 +123,16 @@ if __name__ == "__main__":
 
                 print("Quaternions:", quat)
                 a_norm, b_norm, l_norm = normalize_myo_input(quat[0], quat[1], quat[2])
-                print("Normalized: ")
-                print("Alpha: ", a_norm, " | ", normalize_duty_cycle(a_norm))
-                print("Beta: ",  b_norm, " | ", normalize_duty_cycle(b_norm))
-                print("Lambda: ", l_norm, " | ", normalize_duty_cycle(l_norm))
-                print("")
 
                 a_angle, b_angle, l_angle = normalize_duty_cycle(a_norm, b_norm, l_norm)
 
-                print("angles: ")
-                print("Alpha: ", a_angle)
-                print("Beta: ", b_angle)
-                print("Lambda: ", l_angle)
+                print("Normalized: ")
+                print("Alpha: ", a_norm, " | ", a_angle)
+                print("Beta: ",  b_norm, " | ", b_angle)
+                print("Lambda: ", l_norm, " | ", l_angle)
                 print("")
+
+
 
                 a_color_norm, b_color_norm = normalize_color_output(quat[0], quat[1])
                 print("Color Norm: ", a_color_norm, b_color_norm)
