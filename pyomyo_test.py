@@ -105,8 +105,8 @@ if __name__ == "__main__":
     p = multiprocessing.Process(target=worker, args=(q,))
     p.start()
 
-    upper.start(100)
-    lower.start(100)
+    upper.start(7.5)
+    lower.start(7.5)
 
 
 
@@ -142,7 +142,7 @@ if __name__ == "__main__":
 
                 try:
                     print("changing duty cycle")
-                    upper.ChangeDutyCycle(get_normalized_dc(int(a_angle)))
+                    upper.ChangeDutyCycle(get_normalized_dc(int(b_angle)))
                     lower.ChangeDutyCycle(get_normalized_dc(int(l_angle)))
                 except:
                     print("failed to update arm")
