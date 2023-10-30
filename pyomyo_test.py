@@ -52,11 +52,27 @@ def normalize_color_output(a_i, b_i):
     if b_color_norm > 255: b_color_norm = 255
     return a_color_norm, b_color_norm
 
-def normalize_duty_cycle(duty):
-    desired_angle = duty * 180
-    if desired_angle >= 180: desired_angle = 179
-    if desired_angle <= 0: desired_angle = 1
-    return float((1 / 18) * desired_angle + 2)
+def normalize_duty_cycle(a_n_duty, b_n_duty, l_n_duty):
+
+    if a_n_duty <= 0: a_n_duty = 0
+    a_angle = abs(((a_n_duty - alpha[1])*(180/(alpha[1]-alpha[0]))))
+    if a_angle >= 180: a_angle = 179
+    if a_angle <= 0: a_angle = 1
+    a_angle = float((1 / 18) * a_angle + 2)
+
+    if b_n_duty <= 0: b_n_duty = 0
+    b_angle = abs(((b_n_duty - beta[1])*(180/(beta[1]-beta[0]))))
+    if b_angle >= 180: b_angle = 179
+    if b_angle <= 0: b_angle = 1
+    b_angle = float((1 / 18) * b_angle + 2)
+
+    if l_n_duty <= 0: l_n_duty = 0
+    l_angle = abs(((l_n_duty - lamb[1])*(180/(lamb[1]-lamb[0]))))
+    if l_angle >= 180: l_angle = 179
+    if l_angle <= 0: l_angle = 1
+    l_angle = float((1 / 18) * l_angle + 2)
+
+    return a_angle, b_angle, l_angle
 
 def get_normalized_dc(desired_angle):
     return float((1/18)*desired_angle+2)
@@ -112,6 +128,15 @@ if __name__ == "__main__":
                 print("Beta: ",  b_norm, " | ", normalize_duty_cycle(b_norm))
                 print("Lambda: ", l_norm, " | ", normalize_duty_cycle(l_norm))
                 print("")
+
+                a_angle, b_angle, l_angle = normalize_duty_cycle(a_norm, b_norm, l_norm)
+
+                print("angles: ")
+                print("Alpha: ", a_angle)
+                print("Beta: ", b_angle)
+                print("Lambda: ", l_angle)
+                print("")
+
                 a_color_norm, b_color_norm = normalize_color_output(quat[0], quat[1])
                 print("Color Norm: ", a_color_norm, b_color_norm)
                 m.set_leds([int(a_color_norm), int(b_color_norm), int(a_color_norm)], [int(a_color_norm), int(b_color_norm), int(a_color_norm)])
