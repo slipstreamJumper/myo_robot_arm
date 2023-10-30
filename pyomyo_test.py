@@ -145,8 +145,8 @@ if __name__ == "__main__":
 
                 try:
                     print("changing duty cycle")
-                    upper.ChangeDutyCycle(get_normalized_dc(int(b_angle)))
-                    lower.ChangeDutyCycle(get_normalized_dc(int(l_angle)))
+                    #upper.ChangeDutyCycle(get_normalized_dc(int(b_angle)))
+                    #lower.ChangeDutyCycle(get_normalized_dc(int(l_angle)))
                 except:
                     print("failed to update arm")
 
