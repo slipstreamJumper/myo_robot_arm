@@ -26,7 +26,7 @@ ggyro = 0
 alpha = [-8700, 8700, 2800]
 
 #vert motion about elbow
-beta = [-1200, 1100, -1199]
+beta = [-1200, 11000, -1199]
 
 # rotation of lower arm
 lamb = [-5500, 4000, -1600]
@@ -107,7 +107,11 @@ if __name__ == "__main__":
 
                 print("Quaternions:", quat)
                 a_norm, b_norm, l_norm = normalize_myo_input(quat[0], quat[1], quat[2])
-                print("Normalized: ", "Alpha: " , a_norm, " Beta: ",  b_norm, " Lambda: ", l_norm)
+                print("Normalized: ")
+                print("Alpha: ", a_norm, " | ", normalize_duty_cycle(a_norm))
+                print("Beta: ",  b_norm, " | ", normalize_duty_cycle(b_norm))
+                print("Lambda: ", l_norm, " | ", normalize_duty_cycle(l_norm))
+                print("")
                 a_color_norm, b_color_norm = normalize_color_output(quat[0], quat[1])
                 print("Color Norm: ", a_color_norm, b_color_norm)
                 m.set_leds([int(a_color_norm), int(b_color_norm), int(a_color_norm)], [int(a_color_norm), int(b_color_norm), int(a_color_norm)])
