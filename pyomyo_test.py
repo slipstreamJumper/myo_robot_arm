@@ -1,5 +1,6 @@
 # some source code from PerlinWarp pyomyo examples
 # https://github.com/PerlinWarp/pyomyo/blob/main/examples/myo_imu_examp.py
+# https://toptechboy.com/raspberry-pi-lesson-28-controlling-a-servo-on-raspberry-pi-with-python/
 
 import multiprocessing
 from pyomyo import Myo, emg_mode
@@ -10,11 +11,11 @@ import sys, time
 import RPi.GPIO as GPIO
 
 
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(7, GPIO.OUT)
-GPIO.setup(11, GPIO.OUT)
-upper = GPIO.PWM(7, 50)
-lower = GPIO.PWM(11, 50)
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(21, GPIO.OUT)
+GPIO.setup(26, GPIO.OUT)
+upper = GPIO.PWM(26, 100)
+lower = GPIO.PWM(21, 100)
 
 #global vars
 gquat = 0
@@ -40,14 +41,13 @@ def normalize_myo_input(a_i, b_i):
 
 def normalize_color_output(a_i, b_i):
     a_color_norm = abs(((a_i - alpha[1])*(255/(alpha[1]-alpha[0]))))
-
     if a_color_norm > 255: a_color_norm = 255
-
     b_color_norm = abs(((b_i - beta[1]) * (255 / (beta[1] - beta[0]))))
-
     if b_color_norm > 255: b_color_norm = 255
-
     return a_color_norm, b_color_norm
+
+def get_normalized_dc(desired_angle):
+    return float((1/18)*desired_angle+2)
 
 # ------------ Myo Setup ---------------
 q = multiprocessing.Queue()
@@ -77,8 +77,10 @@ if __name__ == "__main__":
     p = multiprocessing.Process(target=worker, args=(q,))
     p.start()
 
-    upper.start(7.5)
-    lower.start(7.5)
+    upper.start(50)
+    lower.start(50)
+
+
 
     try:
         while True:
@@ -100,8 +102,8 @@ if __name__ == "__main__":
                 #print("Acceleration:", acc)
                 #print("Gyroscope:", gyro)
 
-                upper.ChangeDutyCycle(int(a_norm))
-                lower.ChangeDutyCycle(int(b_norm))
+                upper.ChangeDutyCycle(get_normalized_dc(int(a_norm)))
+                lower.ChangeDutyCycle(get_normalized_dc(int(b_norm)))
 
                 cls()
 
@@ -109,6 +111,5 @@ if __name__ == "__main__":
         upper.stop()
         lower.stop()
         GPIO.cleanup()
-
         print("Quitting")
         quit()
