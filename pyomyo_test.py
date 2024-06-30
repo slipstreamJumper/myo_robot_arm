@@ -194,6 +194,10 @@ if __name__ == "__main__":
 
 
                 print("changing duty cycle")
+
+
+                print("changing upper duty cycle: ", float(b_angle))
+                print("changing lower duty cycle: ", float(l_angle))
                 #upper.ChangeDutyCycle(get_normalized_dc(float(b_angle)))
                 #lower.ChangeDutyCycle(get_normalized_dc(float(l_angle)))
 
