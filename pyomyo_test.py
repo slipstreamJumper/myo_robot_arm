@@ -208,7 +208,9 @@ if __name__ == "__main__":
 
                 cls()
 
-    except:
+
+    except Exception as e:
+        print(e)
         print("ERROR IN MAIN LOOP")
         print("ERROR IN MAIN LOOP")
         print("ERROR IN MAIN LOOP")
