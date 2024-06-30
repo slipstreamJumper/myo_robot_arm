@@ -149,6 +149,7 @@ if __name__ == "__main__":
         print("Critical Error in startup")
         print("Critical Error in startup")
         print("Critical Error in startup")
+        time.sleep(10)
         quit()
 
     try:
