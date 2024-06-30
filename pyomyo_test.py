@@ -63,7 +63,8 @@ def normalize_color_output(a_i, b_i):
         b_color_norm = abs(((b_i - beta[1]) * (255 / (beta[1] - beta[0]))))
         if b_color_norm > 255: b_color_norm = 255
     except:
-        a_color_norm = 1.0, b_color_norm = 1.0
+        a_color_norm = 1.0
+        b_color_norm = 1.0
 
     return a_color_norm, b_color_norm
 
