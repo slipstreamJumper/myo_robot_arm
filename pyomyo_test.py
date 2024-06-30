@@ -116,7 +116,7 @@ def get_normalized_dc(desired_angle):
     except:
         a = 1.0
 
-    return a
+    return float(a)
 
 # ------------ Myo Setup ---------------
 q = multiprocessing.Queue()
