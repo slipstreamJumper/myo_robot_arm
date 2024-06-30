@@ -150,6 +150,8 @@ if __name__ == "__main__":
         p = multiprocessing.Process(target=worker, args=(q,))
         print("starting processor")
         p.start()
+        print(p.get())
+        p.join()
         print("started processor")
 
         upper.start(5)
