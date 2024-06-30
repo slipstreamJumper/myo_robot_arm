@@ -142,6 +142,8 @@ def worker(q):
 
 # -------- Main Program Loop -----------
 if __name__ == "__main__":
+    print("Trying to start")
+
     try:
         print("Trying to start")
         p = multiprocessing.Process(target=worker, args=(q,))
@@ -149,6 +151,7 @@ if __name__ == "__main__":
 
         upper.start(5)
         lower.start(5)
+
     except:
         upper.stop()
         lower.stop()
