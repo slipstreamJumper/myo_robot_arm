@@ -151,23 +151,14 @@ if __name__ == "__main__":
         print("starting processor")
         p.start()
         print(p.get())
-        p.join()
+
         print("started processor")
 
         upper.start(5)
         lower.start(5)
         print("updated to starting positions")
 
-    except:
-        upper.stop()
-        lower.stop()
-        GPIO.cleanup()
-        print("Quitting")
-        quit()
 
-
-
-    try:
         while True:
             while not (q.empty()):
                 imu = list(q.get())
