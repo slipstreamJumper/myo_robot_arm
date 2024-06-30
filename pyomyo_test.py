@@ -160,8 +160,8 @@ if __name__ == "__main__":
 
         print("started processor")
 
-        upper.start(5)
-        lower.start(5)
+        upper.start(sys.argv[1])
+        lower.start(sys.argv[2])
         print("updated to starting positions")
         time.sleep(5)
 
