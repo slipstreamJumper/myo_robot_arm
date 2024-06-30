@@ -175,7 +175,7 @@ if __name__ == "__main__":
                 print("Quaternions:", quat)
                 a_norm, b_norm, l_norm = normalize_myo_input(quat[0], quat[1], quat[2])
 
-                a_angle, b_angle, l_angle = normalize_duty_cycle(a_norm, b_norm, l_norm)
+                float(a_angle), float(b_angle), float(l_angle) = normalize_duty_cycle(a_norm, b_norm, l_norm)
 
                 print("Normalized: ")
                 print("Alpha: ", a_norm, " | ", a_angle)
