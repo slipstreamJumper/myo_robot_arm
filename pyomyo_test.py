@@ -132,7 +132,7 @@ def worker(q):
 # -------- Main Program Loop -----------
 if __name__ == "__main__":
     print("Trying to start")
-
+    time.sleep(5)
     try:
         print("setting pins")
         GPIO.setmode(GPIO.BCM)
@@ -140,6 +140,8 @@ if __name__ == "__main__":
         GPIO.setup(26, GPIO.OUT)
         upper = GPIO.PWM(26, 20)
         lower = GPIO.PWM(21, 20)
+        time.sleep(5)
+
     except:
         print("Critical Error in startup")
         print("Critical Error in startup")
@@ -160,7 +162,7 @@ if __name__ == "__main__":
         upper.start(5)
         lower.start(5)
         print("updated to starting positions")
-
+        time.sleep(5)
 
         while True:
             while not (q.empty()):
