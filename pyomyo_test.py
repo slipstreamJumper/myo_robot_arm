@@ -154,7 +154,6 @@ if __name__ == "__main__":
         p = multiprocessing.Process(target=worker, args=(q,))
         print("starting processor")
         p.start()
-        print(p.get())
 
         print("started processor")
 
