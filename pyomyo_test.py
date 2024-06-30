@@ -10,20 +10,8 @@ import sys, time
 
 import RPi.GPIO as GPIO
 
-try:
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setup(21, GPIO.OUT)
-    GPIO.setup(26, GPIO.OUT)
-    upper = GPIO.PWM(26, 20)
-    lower = GPIO.PWM(21, 20)
-except:
-    print("Critical Error in startup")
-    print("Critical Error in startup")
-    print("Critical Error in startup")
-    print("Critical Error in startup")
-    print("Critical Error in startup")
-    print("Critical Error in startup")
-    quit()
+upper = 0
+lower = 0
 
 #global vars
 gquat = 0
@@ -144,6 +132,22 @@ def worker(q):
 # -------- Main Program Loop -----------
 if __name__ == "__main__":
     print("Trying to start")
+
+    try:
+        print("setting pins")
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(21, GPIO.OUT)
+        GPIO.setup(26, GPIO.OUT)
+        upper = GPIO.PWM(26, 20)
+        lower = GPIO.PWM(21, 20)
+    except:
+        print("Critical Error in startup")
+        print("Critical Error in startup")
+        print("Critical Error in startup")
+        print("Critical Error in startup")
+        print("Critical Error in startup")
+        print("Critical Error in startup")
+        quit()
 
     try:
         print("Trying to start")
