@@ -10,12 +10,20 @@ import sys, time
 
 import RPi.GPIO as GPIO
 
-
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(21, GPIO.OUT)
-GPIO.setup(26, GPIO.OUT)
-upper = GPIO.PWM(26, 20)
-lower = GPIO.PWM(21, 20)
+try:
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(21, GPIO.OUT)
+    GPIO.setup(26, GPIO.OUT)
+    upper = GPIO.PWM(26, 20)
+    lower = GPIO.PWM(21, 20)
+except:
+    print("Critical Error in startup")
+    print("Critical Error in startup")
+    print("Critical Error in startup")
+    print("Critical Error in startup")
+    print("Critical Error in startup")
+    print("Critical Error in startup")
+    quit()
 
 #global vars
 gquat = 0
@@ -96,7 +104,12 @@ def normalize_duty_cycle(a_n_duty, b_n_duty, l_n_duty):
     return a_angle, b_angle, l_angle
 
 def get_normalized_dc(desired_angle):
-    return float((1/18)*desired_angle+2)
+    try:
+        a = float((1/18)*desired_angle+2)
+    except:
+        a = 1.0
+
+    return a
 
 # ------------ Myo Setup ---------------
 q = multiprocessing.Queue()
@@ -123,11 +136,19 @@ def worker(q):
 
 # -------- Main Program Loop -----------
 if __name__ == "__main__":
-    p = multiprocessing.Process(target=worker, args=(q,))
-    p.start()
+    try:
+        print("Trying to start")
+        p = multiprocessing.Process(target=worker, args=(q,))
+        p.start()
 
-    upper.start(5)
-    lower.start(5)
+        upper.start(5)
+        lower.start(5)
+    except:
+        upper.stop()
+        lower.stop()
+        GPIO.cleanup()
+        print("Quitting")
+        quit()
 
 
 
@@ -171,6 +192,14 @@ if __name__ == "__main__":
                 cls()
 
     except KeyboardInterrupt:
+        print("ERROR IN MAIN LOOP")
+        print("ERROR IN MAIN LOOP")
+        print("ERROR IN MAIN LOOP")
+        print("ERROR IN MAIN LOOP")
+        print("ERROR IN MAIN LOOP")
+        print("ERROR IN MAIN LOOP")
+        print("ERROR IN MAIN LOOP")
+        print("ERROR IN MAIN LOOP")
         upper.stop()
         lower.stop()
         GPIO.cleanup()
