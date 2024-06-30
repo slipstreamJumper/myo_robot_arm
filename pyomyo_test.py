@@ -74,7 +74,7 @@ def normalize_duty_cycle(a_n_duty, b_n_duty, l_n_duty):
         elif l_angle >= 18: l_angle = 17.9
 
     except:
-        a_angle, b_angle, l_angle = 10.0
+        a_angle, b_angle, l_angle = 17.9
     #if a_n_duty <= 0: a_n_duty = 0
     #a_angle = abs(((a_n_duty - alpha[1])*(180/(alpha[1]-alpha[0]))))
     #if a_angle >= 180: a_angle = 179
@@ -96,13 +96,13 @@ def normalize_duty_cycle(a_n_duty, b_n_duty, l_n_duty):
     #l_angle = (1 / 18) * l_angle + 2
     #l_angle = l_angle / 10
 
-    return a_angle, b_angle, l_angle
+    return float(a_angle), float(b_angle), float(l_angle)
 
 def get_normalized_dc(desired_angle):
     try:
         a = float((1/18)*desired_angle+2)
     except:
-        a = 1.0
+        a = 11.0
 
     return float(a)
 
@@ -192,16 +192,16 @@ if __name__ == "__main__":
                 print("Acceleration:", acc)
                 print("Gyroscope:", gyro)
 
-                try:
-                    print("changing duty cycle")
-                    upper.ChangeDutyCycle(get_normalized_dc(int(b_angle)))
-                    lower.ChangeDutyCycle(get_normalized_dc(int(l_angle)))
-                except:
-                    print("failed to update arm")
+
+                print("changing duty cycle")
+                upper.ChangeDutyCycle(get_normalized_dc(int(b_angle)))
+                lower.ChangeDutyCycle(get_normalized_dc(int(l_angle)))
+
+                print("failed to update arm")
 
                 cls()
 
-    except KeyboardInterrupt:
+    except:
         print("ERROR IN MAIN LOOP")
         print("ERROR IN MAIN LOOP")
         print("ERROR IN MAIN LOOP")
