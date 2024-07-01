@@ -104,7 +104,7 @@ def get_normalized_dc(desired_angle):
     except:
         a = 11.0
 
-    return float(a)
+    return int(a)
 
 # ------------ Myo Setup ---------------
 q = multiprocessing.Queue()
@@ -160,8 +160,8 @@ if __name__ == "__main__":
 
         print("started processor")
 
-        upper.start(sys.argv[1])
-        lower.start(sys.argv[2])
+        upper.start((int)sys.argv[1])
+        lower.start((int)sys.argv[2])
         print("updated to starting positions")
         time.sleep(5)
 
