@@ -132,15 +132,16 @@ def worker(q):
 # -------- Main Program Loop -----------
 if __name__ == "__main__":
     print("Trying to start")
-    GPIO.cleanup()
+
     time.sleep(5)
     try:
         print("setting pins")
+        GPIO.cleanup()
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(21, GPIO.OUT)
         GPIO.setup(26, GPIO.OUT)
-        upper = GPIO.PWM(26, 20)
-        lower = GPIO.PWM(21, 20)
+        upper = GPIO.PWM(26, 10)
+        lower = GPIO.PWM(21, 10)
         time.sleep(5)
 
     except:
