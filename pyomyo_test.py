@@ -132,6 +132,7 @@ def worker(q):
 # -------- Main Program Loop -----------
 if __name__ == "__main__":
     print("Trying to start")
+    GPIO.cleanup()
     time.sleep(5)
     try:
         print("setting pins")
