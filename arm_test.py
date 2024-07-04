@@ -139,13 +139,20 @@ if __name__ == "__main__":
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(21, GPIO.OUT)
     GPIO.setup(26, GPIO.OUT)
-    upper = GPIO.PWM(26, 10)
-    lower = GPIO.PWM(21, 10)
+    upper = GPIO.PWM(26, 50)
+    lower = GPIO.PWM(21, 50)
 
+    u = int(sys.argv[1])
+    l = int(sys.argv[2])
 
+    upper.start(u)
+    lower.start(l)
 
-    upper.start(int(sys.argv[1]))
-    lower.start(int(sys.argv[2]))
+    upperChange = 1/18 * (u) + 2
+    lowerChange = 1/18 * (l) + 2
+
+    upper.ChangeDutyCycle(upperChange)
+    lower.ChangeDutyCycle(lowerChange)
     print("updated to starting positions")
 
 
