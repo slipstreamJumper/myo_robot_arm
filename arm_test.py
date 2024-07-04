@@ -155,6 +155,10 @@ if __name__ == "__main__":
     lower.ChangeDutyCycle(lowerChange)
     print("updated to starting positions")
 
+    time.sleep(4)
+
+    upper.ChangeDutyCycle(upperChange)
+    lower.ChangeDutyCycle(lowerChange)
 
     upper.stop()
     lower.stop()
