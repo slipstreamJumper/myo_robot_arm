@@ -148,6 +148,7 @@ if __name__ == "__main__":
     upper.start(u)
     lower.start(l)
 
+    time.sleep(1)
     for angle in range(4, 181):
         duty = float(angle) / 18 + 2
         print("Duty: " , duty, " | Angle: ", angle)
@@ -161,8 +162,10 @@ if __name__ == "__main__":
 
     time.sleep(4)
 
-    upper.ChangeDutyCycle(int(sys.argv[1]))
-    lower.ChangeDutyCycle(int(sys.argv[2]))
+    upperChange = 1/18 * (u) + 2
+    lowerChange = 1/18 * (l) + 2
+    upper.ChangeDutyCycle(upperChange)
+    lower.ChangeDutyCycle(lowerChange)
 
     upper.stop()
     lower.stop()
