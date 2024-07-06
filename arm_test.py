@@ -150,7 +150,7 @@ if __name__ == "__main__":
 
     for angle in range(4, 181):
         duty = float(angle) / 18 + 2
-        print(duty, angle)
+        print("Duty: " , duty, " | Angle: ", angle)
 
     #upperChange = 1/18 * (u) + 2
     #lowerChange = 1/18 * (l) + 2
