@@ -155,8 +155,8 @@ if __name__ == "__main__":
     #upperChange = 1/18 * (u) + 2
     #lowerChange = 1/18 * (l) + 2
 
-        upper.ChangeDutyCycle(angle)
-        lower.ChangeDutyCycle(angle)
+        upper.ChangeDutyCycle(duty)
+        lower.ChangeDutyCycle(duty)
     print("updated to starting positions")
 
     time.sleep(4)
