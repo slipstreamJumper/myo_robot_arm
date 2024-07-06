@@ -161,8 +161,8 @@ if __name__ == "__main__":
 
     time.sleep(4)
 
-    #upper.ChangeDutyCycle(upperChange)
-    #lower.ChangeDutyCycle(lowerChange)
+    upper.ChangeDutyCycle(sys.argv[1])
+    lower.ChangeDutyCycle(sys.argv[2])
 
     upper.stop()
     lower.stop()
