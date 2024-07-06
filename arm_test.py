@@ -148,17 +148,21 @@ if __name__ == "__main__":
     upper.start(u)
     lower.start(l)
 
-    upperChange = 1/18 * (u) + 2
-    lowerChange = 1/18 * (l) + 2
+    for angle in range(4, 181):
+        duty = float(angle) / 18 + 2
+        print(duty, angle)
 
-    upper.ChangeDutyCycle(upperChange)
-    lower.ChangeDutyCycle(lowerChange)
+    #upperChange = 1/18 * (u) + 2
+    #lowerChange = 1/18 * (l) + 2
+
+    upper.ChangeDutyCycle(angle)
+    lower.ChangeDutyCycle(angle)
     print("updated to starting positions")
 
     time.sleep(4)
 
-    upper.ChangeDutyCycle(upperChange)
-    lower.ChangeDutyCycle(lowerChange)
+    #upper.ChangeDutyCycle(upperChange)
+    #lower.ChangeDutyCycle(lowerChange)
 
     upper.stop()
     lower.stop()
